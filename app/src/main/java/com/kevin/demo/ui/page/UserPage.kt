@@ -7,11 +7,12 @@ import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -27,7 +28,7 @@ fun UserPage() {
         Column {
             Box(
                 modifier = Modifier
-                    .height(220.dp)
+                    .height(200.dp)
                     .fillMaxWidth()
                     .background(Color.Cyan)
             ) {
@@ -44,17 +45,17 @@ fun UserPage() {
                     }
                 }
             }
-            LabelItem(title = "我的地址")
-            LabelItem(title = "我的积分")
-            LabelItem(title = "我的预约")
-            LabelItem(title = "设置")
+            LabelItem(leadingIcon = Icons.Filled.PinDrop, title = "我的地址")
+            LabelItem(leadingIcon = Icons.Filled.Score, title = "我的积分")
+            LabelItem(leadingIcon = Icons.Filled.Event, title = "我的预约")
+            LabelItem(leadingIcon = Icons.Filled.Settings, title = "设置")
         }
     }
 
 }
 
 @Composable
-fun LabelItem(title: String) {
+fun LabelItem(leadingIcon: ImageVector, title: String) {
     Column {
         Row(
             modifier = Modifier
@@ -64,8 +65,11 @@ fun LabelItem(title: String) {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-
-            Text(text = title)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(imageVector = leadingIcon, contentDescription = "")
+                Spacer(modifier = Modifier.width(5.dp))
+                Text(text = title)
+            }
             Icon(imageVector = Icons.Filled.ChevronRight, contentDescription = "")
         }
         Divider()

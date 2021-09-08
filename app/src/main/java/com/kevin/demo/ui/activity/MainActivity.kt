@@ -44,9 +44,9 @@ class MainActivity : ComponentActivity() {
             )
 
             Scaffold(
-                topBar = {
-                    TopAppBar(title = { Text(text = "HomePage") })
-                },
+//                topBar = {
+//                    TopAppBar(title = { Text(text = "HomePage") })
+//                },
                 bottomBar = {
                     BottomNavigationAlwaysShowLabelComponent(pagerState.value, items = items)
                 },

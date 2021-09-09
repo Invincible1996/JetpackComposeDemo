@@ -20,10 +20,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.kevin.demo.model.BottomBarItemModel
-import com.kevin.demo.ui.page.FavoritePage
-import com.kevin.demo.ui.page.HomePage
-import com.kevin.demo.ui.page.ShoppingCartPage
-import com.kevin.demo.ui.page.UserPage
+import com.kevin.demo.ui.page.*
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -59,12 +56,10 @@ class MainActivity : ComponentActivity() {
                     ) { page ->
 
                         when (page) {
-                            0 -> {
-                                HomePage()
-                            }
+                            0 -> DrawerAppComponent()
                             1 -> FavoritePage()
                             2 -> ShoppingCartPage()
-                            3 -> UserPage()
+                            3 -> UserPage(this@MainActivity)
                         }
                     }
                 })

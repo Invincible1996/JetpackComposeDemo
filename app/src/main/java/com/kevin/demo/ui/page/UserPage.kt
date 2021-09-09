@@ -1,7 +1,10 @@
 package com.kevin.demo.ui.page
 
+import android.content.Intent
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
@@ -16,10 +19,11 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.kevin.demo.ui.activity.SettingActivity
 import com.kevin.jetpack.compose.demo.R
 
 @Composable
-fun UserPage() {
+fun UserPage(activity: ComponentActivity) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -45,18 +49,26 @@ fun UserPage() {
                     }
                 }
             }
-            LabelItem(leadingIcon = Icons.Filled.PinDrop, title = "我的地址")
-            LabelItem(leadingIcon = Icons.Filled.Score, title = "我的积分")
-            LabelItem(leadingIcon = Icons.Filled.Event, title = "我的预约")
-            LabelItem(leadingIcon = Icons.Filled.Settings, title = "设置")
+            LabelItem(leadingIcon = Icons.Filled.PinDrop, title = "我的地址", onClickItem = {})
+            LabelItem(leadingIcon = Icons.Filled.Score, title = "我的积分", onClickItem = {})
+            LabelItem(leadingIcon = Icons.Filled.Event, title = "我的预约", onClickItem = {})
+            LabelItem(leadingIcon = Icons.Filled.Settings, title = "设置", onClickItem = {
+                val intent = Intent(activity, SettingActivity::class.java)
+                activity.startActivity(intent)
+            })
         }
     }
-
 }
 
 @Composable
-fun LabelItem(leadingIcon: ImageVector, title: String) {
-    Column {
+fun LabelItem(
+    leadingIcon: ImageVector,
+    title: String,
+    onClickItem: () -> Unit
+) {
+    Column(modifier = Modifier.clickable {
+        onClickItem()
+    }) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -79,5 +91,5 @@ fun LabelItem(leadingIcon: ImageVector, title: String) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    UserPage()
+//    UserPage()
 }

@@ -83,7 +83,6 @@ fun LoginPage(activity: Activity) {
                 label = { Text(text = "password") },
                 singleLine = true,
                 keyboardActions = KeyboardActions(onGo = {
-//                    focusManager.clearFocus()
                     println(password.value)
                 }),
 
@@ -111,6 +110,7 @@ fun LoginPage(activity: Activity) {
 //                    }
                     val intent = Intent(activity, MainActivity::class.java)
                     activity.startActivity(intent)
+                    activity.finish()
                 },
                 modifier = Modifier
                     .fillMaxWidth(0.7f)
